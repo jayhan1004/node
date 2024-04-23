@@ -1,0 +1,55 @@
+<h1><%=title%></h1>
+<div id="todos">데이터없음</div>
+<!--- 할일목록 템플릿 --->>
+<script id="temp" type="x-handlebars-template">
+    <table class="table table-warning table-striped table-hover">
+        {{#each .}}
+            <tr>
+                <td>{{id}}</td>
+                <td>{{completed}}</td>
+                <td>{{title}}</td>
+            </tr>
+        {{/each}}
+    </table>
+
+</script>
+
+<script>
+    getTodos(); //함수실행
+
+    function getTodos(){ //함수생성
+        fetch('https://jsonplaceholder.typicode.com/todos')
+        .then(response => response.json())
+        .then(json => {
+            console.log(json)
+            const temp=Handlebars.compile($("#temp").html());
+            $("#todos").html(temp(json))
+        })
+    }
+</script>
+
+
+
+<!-- <script>
+    getTodos(); //함수실행
+
+    function getTodos(){ //함수생성
+        fetch('https://jsonplaceholder.typicode.com/todos')
+        .then(response => response.json())
+        .then(json => {
+            console.log(json)
+            let str = '';
+            str += `<table class="table table-warning table-striped table-hover">`;
+            $(json).each(function(){
+                const title = this.title;
+                const id = this.id;
+                const completed = this.completed
+                str += `<tr>`;
+                str += `<td>${id}</td><td>${title}</td><td>${completed}</td>`
+                str += `</tr>`
+        });
+            str += `</table>`;
+            $("#todos").html(str);
+        })
+    }
+</script> -->

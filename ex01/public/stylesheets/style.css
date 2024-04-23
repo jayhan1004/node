@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&display=swap');
+
+*{
+  font-family: "East Sea Dokdo", sans-serif;
+}
+
+body {
+  padding: 0px;
+  font-family: "East Sea Dokdo", sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.div_page{
+  width:960px;
+  margin:0px auto;
+}
+
+.div_bottom{
+  text-align: center;
+}
+
+.div_menu .item{
+  margin:0px 30px;
+}
+
+.div_home{
+  margin: 50px 0px;
+}
+
+h1{
+  text-align: center;
+}
+
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.title{
+  font-size: 25px;
+  color: #00B7FF;
+}
+
+.price{
+  font-size: 25px;
+  color: crimson;
+}
