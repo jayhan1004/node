@@ -1,0 +1,13 @@
+<h1><%=title%></h1>
+
+<div class="card">
+    <div class="card-body">
+        <div style="font-size: 30px;"><b>[<%=post.pid%>] <%=post.title%></b></div>
+        <hr>
+        <div style="font-size: 20px;"><%=post.contents%></div>
+    </div>
+    <div class="card-footer" style="font-size: 15px; color: grey;">
+        <span>작성자 : <%=post.writer%></span>
+        <span class="ms-3">작성일 : <%=post.fdate%></span>
+    </div>
+</div>

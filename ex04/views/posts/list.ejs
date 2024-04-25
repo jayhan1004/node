@@ -1,0 +1,47 @@
+<h1><%=title%></h1>
+
+<!-- 게시물작성으로 이동하는 버튼 -->
+<div class="text-end mb-3" id="div_write" style="display:none;">
+    <a href="/posts/insert"><button class="btn btn-success">글쓰기</button></a>
+</div>
+
+<div id="div_posts"></div>
+
+<!-- 게시글 출력하는 템플릿 -->
+<script id="temp_posts" type="x-handlebars-template">
+    <table class="table table-striped table-hover">
+        <tr>
+            <td>번호</td><td>제목</td><td>작성자</td><td>작성날짜</td>
+        </tr>
+        {{#each .}}
+            <tr>
+                <td>{{pid}}</td>
+                <td><a href="/posts/read?pid={{pid}}">{{title}}</a></td>
+                <td>{{writer}}</td>
+                <td>{{fdate}}</td>
+            </tr>
+        {{/each}}
+    </table>
+</script>
+
+<!-- 게시글 가져오는 함수 -->
+<script>
+    getData();
+    if(uid){
+        $("#div_write").show();
+    }else{
+        $("#div_write").hide();
+    }
+    function getData(){
+        $.ajax({
+            type:"get",
+            url:"/posts/list.json",
+            dataType:"json",
+            success:function(data){
+                console.log(data);
+                const temp=Handlebars.compile($("#temp_posts").html());
+                $("#div_posts").html(temp(data));
+            }
+        })
+    }
+</script>
